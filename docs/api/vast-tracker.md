@@ -51,12 +51,14 @@ vastTracker.on('exitFullscreen', () => {
 |`complete`|Only for linear ads with a duration. Emitted after `complete()` has been called.|`{ trackingURLTemplates: Array<String> }`|
 |`clickthrough`|Emitted when calling `click()` if there is at least one `<clickThroughURLTemplate>` element. A URL will be passed as a data|`String`|
 |`close`|Only for non-linear ads, emitted when `close()` is called|`{ trackingURLTemplates: Array<String> }`|
+|`collapse`|Emitted when calling `setExpand(expanded)` and changing the expand state from true to false|`{ trackingURLTemplates: Array<String> }`|
 |`creativeView`|Emitted when `trackImpression()` is called.|`{ trackingURLTemplates: Array<String> }`|
 |`exitFullscreen`|Emitted when calling `setFullscreen(fullscreen)` and changing the fullscreen state from true to false|`{ trackingURLTemplates: Array<String> }`|
+|`expand`|Emitted when calling `setExpand(expanded)` and changing the expand state from false to true|`{ trackingURLTemplates: Array<String> }`|
 |`firstQuartile`|Only for linear ads with a duration. Emitted when the adunit has reached 25% of its duration|`{ trackingURLTemplates: Array<String> }`|
 |`fullscreen`|Emitted when calling `setFullscreen(fullscreen)` and changing the fullscreen state from false to true|`{ trackingURLTemplates: Array<String> }`|
 |`midpoint`|Only for linear ads with a duration. Emitted when the adunit has reached 50% of its duration|`{ trackingURLTemplates: Array<String> }`|
-|`mute`|Emitted when calling `setMuted(muted)` and changing the mute state from false to true|   |
+|`mute`|Emitted when calling `setMuted(muted)` and changing the mute state from false to true|`{ trackingURLTemplates: Array<String> }`|
 |`pause`|Emitted when calling `setPaused(paused)` and changing the pause state from false to true|`{ trackingURLTemplates: Array<String> }`|
 |`progress-[0-100]%`|Only for linear ads with a duration. Emitted on every `setProgress(duration)` calls, where [0-100] is the adunit percentage completion|`{ trackingURLTemplates: Array<String> }`|
 |`progress-[currentTime]`|Only for linear ads with a duration. Emitted on every `setProgress(duration)` calls, where [currentTime] is the adunit current time|`{ trackingURLTemplates: Array<String> }`|
