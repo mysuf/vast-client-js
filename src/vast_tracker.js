@@ -407,7 +407,7 @@ export class VASTTracker extends EventEmitter {
       this.emit(eventName, { trackingURLTemplates });
       this.trackURLs(trackingURLTemplates);
     } else if (isAlwaysEmitEvent) {
-      this.emit(eventName, '');
+      this.emit(eventName, null);
     }
 
     if (once) {
