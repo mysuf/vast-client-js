@@ -91,13 +91,25 @@ export class VASTClient {
    * @return {Promise}
    */
   get(url, options = {}) {
-    const now = Date.now();
     options = Object.assign(this.defaultOptions, options);
 
     // By default the client resolves only the first Ad or AdPod
     if (!options.hasOwnProperty('resolveAll')) {
       options.resolveAll = false;
     }
+
+    return this.checkSkipLimits().then(() => {
+      return this.vastParser.getAndParseVAST(url, options);
+    });
+  }
+
+  /**
+   * Applies the skipping rules defined.
+   * Returns either resolved empty Promise or rejection with an Error.
+   * @return {Promise}
+   */
+  checkSkipLimits() {
+    const now = Date.now();
 
     // Check totalCallsTimeout (first call + 1 hour), if older than now,
     // reset totalCalls number, by this way the client will be eligible again
@@ -135,11 +147,7 @@ export class VASTClient {
           )
         );
       }
-
-      this.vastParser
-        .getAndParseVAST(url, options)
-        .then(response => resolve(response))
-        .catch(err => reject(err));
+      return resolve();
     });
   }
 }
