@@ -29,10 +29,15 @@ function get(url, options, cb) {
   }
 
   request
-    .then(response => response.text())
-    .then(str =>
-      cb(null, new window.DOMParser().parseFromString(str, 'text/xml'))
-    )
+    .then(response => {
+      if (response.status !== 200) {
+        throw new Error(`fetchURLHandler: ${request.statusText}`);
+      }
+      return response.text();
+    })
+    .then(str => {
+      cb(null, new window.DOMParser().parseFromString(str, 'text/xml'));
+    })
     .catch(err => cb(err));
 }
 
