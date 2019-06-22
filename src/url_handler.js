@@ -1,6 +1,7 @@
 import { flashURLHandler } from './urlhandlers/flash_url_handler';
 import { nodeURLHandler } from './urlhandlers/mock_node_url_handler';
 import { XHRURLHandler } from './urlhandlers/xhr_url_handler';
+import { fetchURLHandler } from './urlhandlers/fetch_url_handler';
 
 function get(url, options, cb) {
   // Allow skip of the options param
@@ -13,6 +14,8 @@ function get(url, options, cb) {
 
   if (typeof window === 'undefined' || window === null) {
     return nodeURLHandler.get(url, options, cb);
+  } else if (fetchURLHandler.supported()) {
+    return fetchURLHandler.get(url, options, cb);
   } else if (XHRURLHandler.supported()) {
     return XHRURLHandler.get(url, options, cb);
   } else if (flashURLHandler.supported()) {

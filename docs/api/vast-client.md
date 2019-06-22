@@ -91,6 +91,7 @@ By default the fully parsed `VASTResponse` contains all the Ads contained in the
  * **`options: Object`** - An optional Object to configure the request:
     * `timeout: Number` - A custom timeout for the requests (default `0`)
     * `withCredentials: Boolean` - A boolean to enable the withCredentials options for the XHR and FLASH URLHandlers (default `false`)
+    * `followRedirects: Boolean` - A boolean to enable following redirects for the fetch handler (default `true`)
     * `wrapperLimit: Number` - A number of Wrapper responses that can be received with no InLine response (default `0`)
     * `urlHandler: URLHandler` - Custom urlhandler to be used instead of the default ones [`urlhandlers`](../../src/urlhandlers)
     * `urlhandler: URLHandler` - Fulfills the same purpose as `urlHandler`, which is the preferred parameter to use

@@ -138,7 +138,9 @@ export class VASTParser extends EventEmitter {
     this.maxWrapperDepth = options.wrapperLimit || DEFAULT_MAX_WRAPPER_DEPTH;
     this.fetchingOptions = {
       timeout: options.timeout,
-      withCredentials: options.withCredentials
+      withCredentials: !!options.withCredentials,
+      followRedirects:
+        !('followRedirects' in options) || options.followRedirects
     };
 
     this.urlHandler = options.urlHandler || options.urlhandler || urlHandler;

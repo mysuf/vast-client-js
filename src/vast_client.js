@@ -20,6 +20,7 @@ export class VASTClient {
     this.cappingMinimumTimeInterval = cappingMinimumTimeInterval || 0;
     this.defaultOptions = {
       withCredentials: false,
+      followRedirects: true,
       timeout: 0
     };
     this.vastParser = new VASTParser();
